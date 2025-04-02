@@ -1,7 +1,8 @@
 import { Layout, Typography, Card, Row, Col, Space } from 'antd';
-import Navbar from '@/components/Navbar';
+import { lazy, Suspense } from 'react';
 import { useStore } from '@/store/userStore';
 import { useNavigate } from 'react-router-dom';
+const Navbar = lazy(() => import('@/components/Navbar'));
 
 const { Content } = Layout;
 const { Title, Text } = Typography;
@@ -12,7 +13,9 @@ const Home = () => {
 
   return (
     <Layout className="min-h-screen bg-gray-50">
-      <Navbar />
+      <Suspense fallback={<div>加载中...</div>}>
+        <Navbar />
+      </Suspense>
       <Content className="p-8">
         <div className="max-w-6xl mx-auto">
           {user ? (

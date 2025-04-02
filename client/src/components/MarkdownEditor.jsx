@@ -28,6 +28,7 @@ const MarkDownEditor = ({ value, onChange }) => {
       value: value || '',
       externals: {
         katex: window.katex,
+        echarts: window.echarts
       },
       editor: {
         id: 'markdown-editor',
@@ -80,7 +81,7 @@ const MarkDownEditor = ({ value, onChange }) => {
           },
           mathBlock: {
             engine: 'MathJax', // katex或MathJax
-            src: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js', // 如果使用MathJax plugins，则需要使用该url通过script标签引入
+            src: 'https://unpkg.com/mathjax@3/es5/tex-svg.js', // 如果使用MathJax plugins，则需要使用该url通过script标签引入
           },
           inlineMath: {
             engine: 'MathJax', // katex或MathJax

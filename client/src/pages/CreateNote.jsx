@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { message } from 'antd';
+import { useState, useEffect } from 'react';
 import { createNote } from '@/api/noteApi';
 import { getCategories } from '@/api/categoryApi';
 import { useStore } from '@/store/userStore';
 import { useNavigate } from 'react-router-dom';
+import { message, Button, Card } from 'antd';
 import Navbar from '@/components/Navbar';
 import NoteForm from '@/components/NoteForm';
 
@@ -48,13 +48,24 @@ const CreateNote = () => {
     <>
       <Navbar />
       <div className="p-4">
-        <h1>创建笔记</h1>
-        <NoteForm
-          categories={categories}
-          onSubmit={handleSubmit}
-          submitButtonText="创建笔记"
-          loading={loading}
-        />
+        <Button
+          type="primary"
+          onClick={() => navigate(-1)}
+          className="mb-4"
+        >
+          返回
+        </Button>
+        <Card className="shadow">
+          <div className="p-4">
+            <h1 className="text-lg font-semibold mb-4">创建笔记</h1>
+            <NoteForm
+              categories={categories}
+              onSubmit={handleSubmit}
+              submitButtonText="创建笔记"
+              loading={loading}
+            />
+          </div>
+        </Card>
       </div>
     </>
   );

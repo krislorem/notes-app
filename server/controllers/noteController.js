@@ -69,6 +69,8 @@ export const getNote = async (req, res) => {
 
 // 更新笔记
 export const updateNote = async (req, res) => {
+  const { id } = req.params;
+  const { content, updateType } = req.body;
   try {
     const { id } = req.params;
     const { title, content, categoryId, tags } = req.body;

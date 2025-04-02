@@ -28,6 +28,7 @@ const Previewer = ({ value }) => {
       value: value || '',
       externals: {
         katex: window.katex,
+        echarts: window.echarts
       },
       editor: {
         id: 'markdown-editor',
@@ -80,7 +81,7 @@ const Previewer = ({ value }) => {
           },
           mathBlock: {
             engine: 'MathJax', // katex或MathJax
-            src: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js', // 如果使用MathJax plugins，则需要使用该url通过script标签引入
+            src: 'https://unpkg.com/mathjax@3/es5/tex-svg.js', // 如果使用MathJax plugins，则需要使用该url通过script标签引入
           },
           inlineMath: {
             engine: 'MathJax', // katex或MathJax
@@ -101,20 +102,18 @@ const Previewer = ({ value }) => {
         },
       },
       toolbars: {
+        toolbar: [
+          'codeTheme',
+          'search',
+        ],
+        toolbarRight: ['fullScreen', '|', 'export', 'changeLocale', 'wordCount'],
+        sidebar: ['mobilePreview', 'copy', 'theme'],
         toc: {
           updateLocationHash: false, // 要不要更新URL的hash
           defaultModel: 'full', // pure: 精简模式/缩略模式，只有一排小点； full: 完整模式，会展示所有标题
         },
       },
-      previewer: {
-        // 自定义markdown预览区域class
-        floatWhenClosePreviewer: false,
-      },
-      keydown: [],
-      //extensions: [],
-      // cherry初始化后是否检查 location.hash 尝试滚动到对应位置
       autoScrollByHashAfterInit: true,
-      // locale: 'en_US',
       themeSettings: {
         mainTheme: 'light',
       },

@@ -79,16 +79,18 @@ const NoteForm = ({
       <Form.Item
         label="内容"
         name="content"
+        style={{ height: '100%' }}
         rules={[{ required: true, message: '请输入笔记内容' }]}
       >
         <MarkdownEditor
+          style={{ maxHeight: '500px' }}
+          className="max-h-[500px] overflow-y-auto"
           value={form.getFieldValue('content')}
           onChange={(value) => {
             form.setFieldsValue({ content: value });
-            console.log('Markdown content changed:', value);
+            // console.log('Markdown content changed:', value);
             // 移除validateFields调用，因为它可能导致不必要的验证干扰
           }}
-          style={{ height: '500px' }}
         />
       </Form.Item>
 

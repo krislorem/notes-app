@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { message } from 'antd';
+import { message, Button, Card } from 'antd';
 import { updateNote, getNote } from '@/api/noteApi';
 import { getCategories } from '@/api/categoryApi';
 import { useStore } from '@/store/userStore';
@@ -56,14 +56,25 @@ const EditNote = () => {
     <>
       <Navbar />
       <div className="p-4">
-        <h1>编辑笔记</h1>
-        <NoteForm
-          initialValues={noteData}
-          categories={categories}
-          onSubmit={handleSubmit}
-          submitButtonText="更新笔记"
-          loading={loading}
-        />
+        <Button
+          type="primary"
+          onClick={() => navigate(-1)}
+          className="mb-4"
+        >
+          返回
+        </Button>
+        <Card className="shadow">
+          <div className="p-4">
+            <h1 className="text-lg font-semibold mb-4">编辑笔记</h1>
+            <NoteForm
+              initialValues={noteData}
+              categories={categories}
+              onSubmit={handleSubmit}
+              submitButtonText="更新笔记"
+              loading={loading}
+            />
+          </div>
+        </Card>
       </div>
     </>
   );

@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'JetBrainsMono';
+  src: url('@/assets/fonts/JETBRAINSMONONLNERDFONT-REGULAR.TTF') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+* {
+  font-family: 'JetBrainsMono', monospace !important;
+}
